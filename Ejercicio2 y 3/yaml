@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: ./ruta/de/tu/web
+    ports:
+      - "80:80"
+  api:
+    build: ./ruta/de/tu/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
